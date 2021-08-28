@@ -1,12 +1,18 @@
 DefaultTask
-	Inputs:  1
-		Offset    Size
-		      39,        0
-	Outputs: 3
+	Inputs:  4
 		Offset    Size
 		       1,        1
+		       2,        1
+		       3,        1
+		       4,        1
+	Outputs: 6
+		Offset    Size
+		       1,        1
+		       2,        1
+		       3,        1
 		       8,        1
 		       9,        1
+		      10,        1
 DefaultTask
 	Inputs:  9
 		Offset    Size
