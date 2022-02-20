@@ -1,0 +1,315 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+sensor:
+  - platform: mqtt
+    name: "Илья Вес"
+    state_topic: "miscale/ILYA/weight"
+    value_template: "{{ value_json['weight'] }}"
+    unit_of_measurement: "kg"
+    json_attributes_topic: "miscale/ILYA/weight"
+    icon: mdi:scale-bathroom
+  - platform: mqtt
+    name: "Карина Вес"
+    state_topic: "miscale/KARINA/weight"
+    value_template: "{{ value_json['weight'] }}"
+    unit_of_measurement: "kg"
+    json_attributes_topic: "miscale/KARINA/weight"
+    icon: mdi:scale-bathroom
+     
+    
+#modbus:
+#  - name: "PLC1"
+#    close_comm_on_error: false
+#    delay: 5
+#    timeout: 5
+#    type: serial
+#    baudrate: 115200
+#    bytesize: 8
+#    method: rtu
+#    parity: N
+#    port: /dev/ttyUSB0
+#    stopbits: 1
+
+modbus:
+  - name: "PLC"
+    type: tcp
+    host: 10.0.241.3
+    port: 502
+#    delay: 2 # 2 секунды одуплиться после подключения 
+    timeout: 2 
+    
+    lights:
+      - name: "Channel_5"
+        address: 0
+        slave: 1
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 0
+            state_on: 1
+            state_off: 0
+      - name: "Channel_6"
+        slave: 1
+        address: 1
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 1
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_7"
+        slave: 1
+        address: 2
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 2
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_8"
+        slave: 1
+        address: 3
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 3
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_9"
+        slave: 1
+        address: 4
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 4
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_10"
+        slave: 1
+        address: 5
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 5
+            state_on: 1
+            state_off: 0
+
+      - name: "Channel_11"
+        slave: 1
+        address: 6
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 6
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_12"
+        slave: 1
+        address: 7
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 7
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_13"
+        slave: 1
+        address: 8
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 8
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_14"
+        slave: 1
+        address: 9
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 9
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_15"
+        slave: 1
+        address: 10
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 10
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_16"
+        slave: 1
+        address: 11
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 11
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_17"
+        slave: 1
+        address: 12
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 12
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_18"
+        slave: 1
+        address: 13
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 13
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_19"
+        slave: 1
+        address: 14
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 14
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_20"
+        slave: 1
+        address: 15
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 15
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_21"
+        slave: 1
+        address: 16
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 16
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_22"
+        slave: 1
+        address: 17
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 17
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_23"
+        slave: 1
+        address: 18
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 18
+            state_on: 1
+            state_off: 0
+            
+      - name: "Channel_24"
+        slave: 1
+        address: 19
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 19
+            state_on: 1
+            state_off: 0
+      - name: "STM32_RELAY"
+        slave: 1
+        address: 30
+        write_type: coil
+        scan_interval: 1
+        verify:
+            input_type: coil
+            address: 31
+            state_on: 1
+            state_off: 0
+    switches:
+      - name: Switch1
+        address: 24
+        slave: 1
+        scan_interval: 1
+        write_type: coil
+        verify:
+            input_type: coil
+            address: 24
+            state_on: 1
+            state_off: 0
+    binary_sensors:
+      - name: Window
+        address: 25
+        slave: 1
+        scan_interval: 1
+        device_class: window
+    sensors:
+      - name: stm_temp_ext
+        slave: 1
+        scan_interval: 3
+        address: 2
+        input_type: holding
+        unit_of_measurement: °C
+        precision: 2
+        count: 2
+        data_type: float32
+      - name: stm_temp_int
+        slave: 1
+        scan_interval: 3
+        address: 4
+        input_type: holding
+        unit_of_measurement: °C
+        precision: 2
+        count: 2
+        data_type: float32
