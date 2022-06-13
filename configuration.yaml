@@ -1,0 +1,46 @@
+homeassistant:
+  name: Home
+  unit_system: metric
+  # etc
+
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include_dir_merge_list includes/automation
+#automation: !include automations.yaml
+
+script: !include scripts.yaml
+scene: !include scenes.yaml
+modbus: !include modbus.yaml
+ssdp:
+# Включение официального интерфейса
+frontend:
+  themes: !include_dir_merge_named themes
+
+    
+sensor:
+  - platform: mqtt
+    name: "Илья Вес"
+    state_topic: "miscale/ILYA/weight"
+    value_template: "{{ value_json['weight'] }}"
+    unit_of_measurement: "kg"
+    json_attributes_topic: "miscale/ILYA/weight"
+    icon: mdi:scale-bathroom
+  - platform: mqtt
+    name: "Карина Вес"
+    state_topic: "miscale/KARINA/weight"
+    value_template: "{{ value_json['weight'] }}"
+    unit_of_measurement: "kg"
+    json_attributes_topic: "miscale/KARINA/weight"
+    icon: mdi:scale-bathroom
+     
+    
+
+
+
